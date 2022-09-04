@@ -56,3 +56,5 @@ plugins:
 #   - vendor/ruby/
 exclude:
   - lib/
+  - minima-ref/  #ignore reference copy of original minima theme
+  - _img_work/
