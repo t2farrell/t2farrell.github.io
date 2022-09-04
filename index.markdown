@@ -5,5 +5,3 @@
 layout: home
 list_title: Blog Posts
 ---
-
-Welcome to troyfarrell.com.
