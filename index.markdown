@@ -3,5 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: This is My Index
+list_title: Blog Posts
 ---
+
+Welcome to troyfarrell.com.
