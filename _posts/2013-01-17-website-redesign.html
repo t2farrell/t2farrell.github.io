@@ -1,0 +1,37 @@
+---
+layout: post
+title:  "Website (Re)Design - What is Important Today?"
+date:   2013-01-17 21:54:00 -0400
+tags: [asp.net, visual studio, mobile, css3, less, html5, responsive UI, javascript]
+permalink: /blog/post/Website-(Re)Design-What-is-Important-Today  #support old legacy urls
+---
+
+<p>Mobile devices. &nbsp;More on that later.</p>
+<p>I decided that it was time to update my website with a new design. &nbsp;The previous one had been around since 2002. &nbsp;Since then, the site had seen some content updates and a few technology updates, but nothing major. &nbsp;Nothing architectural. &nbsp;Nothing visual.</p>
+
+<p>I began the process of redesign by doing some research and identifying some requirements. &nbsp;I also identified some specific technologies that I wanted to use, mostly out of interest, since this simple site could be completed&nbsp;successfully&nbsp;in many ways.</p>
+<p>The requirements:</p>
+<ul>
+<li>Mobile device compatible</li>
+<li>Responsive UI design (related to mobile device compatibility)</li>
+<li>new look and feel - new design, something different</li>
+<li>adopt HTML5 and CSS3</li>
+<li>adopt MVC (Model-View-Controller) with extension-less URLs (like /Resume instead of /Resume.aspx)</li>
+<li>support proper redirection of URLs that changed because of above, so that old links to my site would not return a 404 Not Found</li>
+<li>support for <a href="http://en.wikipedia.org/wiki/URL_normalization" target="_blank">canonical URLs</a></li>
+<li>custom 404 Not Found page</li>
+<li>update blog to use latest version of <a href="http://www.dotnetblogengine.net/" target="_blank">BlogEngine.NET</a></li>
+<li>provide a printer friendly version of my online resume</li>
+</ul>
+<p>If you are redesigning an existing site or application, the size and scope of the work has to be analyzed to determine the best implementation strategy. &nbsp;In my case, the site was small enough and simple enough that a complete re-write was the logical choice. &nbsp;For larger projects, a phased approach might make more sense and would probably deliver business value sooner than attempting a complete re-write from scratch.</p>
+<p>I started with site architecture research. &nbsp;I wanted an HTML5 site that used CSS3 and supported mobile devices. &nbsp;Mobile device support is important. &nbsp;It is no secret that mobile device adoption is soaring. &nbsp;The typical options for mobile support currently include building:</p>
+<ul>
+<li>a native application (an application designed specifically for each device type such as iPhone, android, BlackBerry, Windows Phone, etc.)</li>
+<li>a website with a Responsive UI design that works well with mobile devices or a site designed specifically for mobile</li>
+<li>a hybrid - a site built mostly with HTML5 and javascript that is then wrapped inside&nbsp;a native application using a tool like <a href="http://phonegap.com/">PhoneGap</a>&nbsp;to create the wrapper</li>
+</ul>
+<p>My simple site did not warrant a native application, nor a hybrid solution. &nbsp;I did not want to create a separate site or design to support mobile devices, so I opted for a Responsive UI design that "adjusts" itself as the screen size changes, to provide an optimized view of the site content at different resolutions. &nbsp;To implement this, I reviewed <a href="http://html5boilerplate.com/">HTML5Boilerplate </a>and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, eventually choosing the latter. &nbsp;Both are very good based on my testing so far and are an excellent way to get started with a responsive layout using HTML5 and CSS3. &nbsp;Bootstrap includes <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Glyphicons</a> which are cool, but I switched to <a href="http://fortawesome.github.com/Font-Awesome/">FontAwesome</a>, which uses a custom font instead of images. &nbsp;Using a font is cool because changing the icon size and color is as simple as changing font size and color using standard CSS. &nbsp;No photoshop required to get a blue version of a white icon.</p>
+<p>I am not a web designer, my strength lies more with software architecture, so the new look and feel was developed with help from some Bootstrap themes and my desire to move towards a clean, simple site that focused on functionality and readability. In some respects, moving toward a Microsoft Modern UI (formerly Metro) style look, but without going all the way there.</p>
+<p>I implemented the site with ASP.NET MVC3. I used a <a href="http://forloop.co.uk/blog/asp.net-mvc-permanent-301-redirects-for-legacy-routes">Legacy Route Handler</a> to accomplish the redirection of old links to the new extension-less URLs in a way that provides a proper 301 Moved Permanently response to help search engines update their indexes.</p>
+<p>Support for canonical URLs was implemented using the&nbsp;<a href="http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/">IIS7 URL Rewrite 2.0</a> extension. &nbsp;It allows the definition of simple rules to manipulate URLs. &nbsp;In my case, it was used so that multiple domains (like troyfarrell.ca) get redirected to my primary .com domain. &nbsp;This is also important for search engines, to avoid duplicate indexing of the same content.</p>
+<p>So that sums up what was important to me, when considering a site redesign this time around. &nbsp;What do you think? &nbsp;What did I forget?</p>

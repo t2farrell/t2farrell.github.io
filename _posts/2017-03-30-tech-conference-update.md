@@ -2,7 +2,7 @@
 layout: post
 title:  "Technology Conference Update"
 date:   2017-03-30 11:10:00 -0400
-categories: pdc pdc2008
+tags: [pdc, pdc2008, conference]
 permalink: /blog/post/technology-conference-update  #support old legacy urls
 ---
 

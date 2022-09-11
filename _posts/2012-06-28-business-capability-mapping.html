@@ -1,0 +1,113 @@
+---
+layout: post
+title:  "Exploring Business Capability Mapping"
+date:   2012-06-28 09:35:00 -0400
+tags: [Ric Merrifield, MOTION, business capability mapping]
+permalink: /blog/post/Exploring-Business-Capability-Mapping  #support old legacy urls
+---
+
+<p>"<em>There is surely nothing quite so useless as doing with great efficiency what should not be done at all.</em>" - Peter Drucker</p>
+<p>I started looking into the process of Business Capability mapping while following up on notes from my <a title="Advanced Distributed Systems Design using SOA &amp; DDD" href="http://www.udidahan.com/training/#Advanced_Distributed_System_Design">Advanced Distributed Systems Design using SOA &amp; DDD&nbsp;course with Udi Dahan</a> who mentioned it.&nbsp; The process dubbed MOTION by Microsoft was referenced during the course, as a good thing to follow up on later.</p>
+
+<p>MOTION was the codename for the project, from which a process was created.&nbsp; It was later renamed as Microsoft Services Business Architecture (MSBA) and was available from Microsoft as consulting services for a fee (though not any more).&nbsp; Several patents were registered for this process methodology.</p>
+<p>Process defined:&nbsp; <em>Motion uses business architecture to expose the business model of an organization, and then applies that information either to resolving a specific problem, or to informing decisions related to project prioritization and selection. Motion includes a patent-pending business architecture model, a template-rich methodology, and a variety of tools for capturing the business architecture and business model information in a highly stable, objective, and metric-rich format. That business architecture information can be linked to process, organization, and IT architecture information. By design, everything about Motion is technology-agnostic and mostly acronym-free.</em></p>
+<p><a href="http://en.wikipedia.org/wiki/Capability" target="_blank">Wikipedia </a>defines Capability as: <em>the ability to perform actions. As it applies to human capital, capability is the sum of expertise and capacity.</em></p>
+<p>Forrester Research says:&nbsp; <em>A business capability defines the organization's capacity to successfully perform a unique business activity.&nbsp; Capabilities:</em></p>
+<ul>
+<li><em>are the building blocks of the business</em></li>
+<li><em>represent stable business functions</em></li>
+<li><em>are unique and independent from each other</em></li>
+<li><em>are abstracted from the organizational model</em></li>
+<li><em>capture the business interests</em></li>
+</ul>
+<p>A capability usually starts with a verb.&nbsp; So an insurance company might have a "Manage Life Insurance Contracts" capability, but not a "Contract System".&nbsp; Certainly, there may indeed be a system or set of services that support the capability of managing life insurance contracts, however, the contract system is more focused on the IT architecture, instead of the business capability.</p>
+<p>The capabilities focus more on the "what" does a business do, and less on "how" the business does it.&nbsp; The advantage of modeling things this way is they are less prone to change.&nbsp; A simple example might be a Send Customer Invoice capability.&nbsp; Over time, the method of sending that invoice has changed, from printed and mailed bills, to emailed PDFs, but the business capability remains the same.</p>
+<p>Sometimes, capabilities are automated using IT solutions, and other times, they may be supported and provided by manual office operations of the business (using email, spreadsheets, etc.).&nbsp; Capabilities can be composed of a combination of People, Processes and IT supported solutions.</p>
+<p>Each capability can also have over 100 attributes (properties), for instance:</p>
+<ul>
+<li>performance metrics (time, financial, volume, etc)</li>
+<li>cost information</li>
+<li>compliance criteria</li>
+<li>service level agreements (SLA) or service level expectations (SLE)</li>
+<li>owner</li>
+<li>description</li>
+<li>manual/automated</li>
+<li>in-sourced/outsourced</li>
+</ul>
+<p>Once the Business Capabilities are defined, they outline "what" the business does and this can be used to map out the areas of the business that:</p>
+<ul>
+<li>might benefit from IT support.</li>
+<li>are important</li>
+<li>are less important</li>
+<li>might be candidates for outsourcing</li>
+<li>etc.</li>
+</ul>
+<p>Processes and Technology(IT) often represent the "how" a business does something and not the "what" the business does.</p>
+<p><strong>Maybe an Example?</strong></p>
+<p>Sure.&nbsp; The following represents the expression of a set of sample business capabilities from a fictitious mortgage company.&nbsp;</p>
+<p>&nbsp;</p>
+<div style="overflow: scroll;">
+<table style="width: 1200px; height: 150px;" border="0">
+<tbody>
+<tr style="vertical-align: top;">
+<td>
+<h4 class="dtH1">Level 1 Capabilities</h4>
+<ol type="1">
+<li>Develop Product/Service</li>
+<li>Generate Demand</li>
+<li>Fulfill Demand==============&gt;</li>
+<li>Plan and Manage the Business</li>
+<li>Collaboration</li>
+</ol>
+</td>
+<td>
+<h4 class="dtH1">Level 2 Capabilities for Fulfill Demand</h4>
+<p>3.1.&nbsp;&nbsp;&nbsp;Provide Service<br />3.2.&nbsp;&nbsp;&nbsp;Advanced Planning<br />3.3.&nbsp;&nbsp;&nbsp;Procurement==========&gt;<br />3.4.&nbsp;&nbsp;&nbsp;Produce Product&nbsp;</p>
+</td>
+<td>
+<h4 class="dtH1">Level 3 Capabilities for Fulfill Demand/Procurement</h4>
+<p>3.3.1.&nbsp;&nbsp;&nbsp;Sourcing and Supplier Contract Management<br />3.3.2.&nbsp;&nbsp;&nbsp;Purchase Resources========&gt;<br />3.3.3.&nbsp;&nbsp;&nbsp;Receiving of Indirect/Capital Goods and Services&nbsp;</p>
+</td>
+<td>
+<h4 class="dtH1">Level 4 Capabilities for Fulfill Demand/Procurement/Purchase Resources</h4>
+<p>3.3.2.1.&nbsp;&nbsp;&nbsp;Request Resources============&gt;<br />3.3.2.2.&nbsp;&nbsp;&nbsp;Acquire/Purchase Resources<br />3.3.2.3.&nbsp;&nbsp;&nbsp;Manage Suppliers&nbsp;</p>
+</td>
+<td>
+<h4 class="dtH1">Level 5 Capabilities for Fulfill Demand/Procurement/Purchasing/Request Resources</h4>
+<p>3.3.2.1.1.&nbsp;&nbsp;&nbsp;Create Purchase Requisitions<br />3.3.2.1.2.&nbsp;&nbsp;&nbsp;Manage Requisitions Approve Process<br />3.3.2.1.3.&nbsp;&nbsp;&nbsp;Perform Encumbrance Check<br />3.3.2.1.4.&nbsp;&nbsp;&nbsp;Create Auction Bids&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>So, Why Does This Matter?</strong></p>
+<p>There are different types of software architecture commonly employed in the enterprise space, including Object Oriented, Services Oriented (SOA), etc.&nbsp; The latter has gained popularity in the last few years and SOA in particular, can benefit from Business Capability maps, as they can assist in showing you "what" the business does, and provide direction on how the services in a system might be composed.&nbsp; In this context, I'm not referring to web services, but to the autonomous building blocks that make up a software system that supports the operation of a business.</p>
+<p>There are several business benefits mentioned above, but from my perspective, as a software architect, the primary value I see in documenting business capabilities lies in uncovering tools and information that might help me to design systems and applications that will serve the business most effectively.&nbsp; It is difficult to design software to meet business needs, when the business does not have a clear definition of their needs. &nbsp;When you begin gathing requirements, it is too easy to start writing down the "how" things are done and skip over the "what" and the "why".&nbsp;</p>
+<p>Since most ideas gain traction with a business case, it would be nice if there was a business case for the work required to develop Business Capabilities.&nbsp; <a href="http://www.bpminstitute.org/articles/article/article/the-business-case-for-business-architecture-ba.html" target="_blank">This article</a> talks about some ideas to consider for developing a business case for Business Architecture, which can include business capability mapping.&nbsp; Another must read is <a href="http://links.enterprisearchitecture.dk/links/files/You_Cant_Justify_Architecture.pdf" target="_blank"><em>You Can't "Cost Justify" Architecture</em></a> by John Zachman.&nbsp; It outlines great arguments of why architecture is important and in many ways, the examples demonstrate reasons for investing in your products' software architecture too.</p>
+<p><strong>I'm Still Not Sold</strong></p>
+<p>As I read <a href="http://www.amazon.com/Rethink-Business-Manifesto-Boosting-Innovation/dp/0137031653">ReThink:&nbsp;A Business Manifesto for Cutting Costs and Boosting Innovation</a>&nbsp;by Ric Merrifield (the former Microsoft employee behind MOTION) I'm&nbsp;working my way through the steps of questioning the process of architecting software, and finding it an interesting journey.</p>
+<p>For software companies that sell a software product, I can see value in thinking about this process from two fronts:</p>
+<ul>
+<li>internally, reviewing the business capabilities of your own business, to ensure you are focusing on what is important and what you are good at</li>
+<li>externally, look at the business capabilities of your customers' business or different business verticals, or by industry if applicable, trying to find ways to improve the fit of your software within the "whats" of their business</li>
+</ul>
+<p>Having this information could allow different teams within your organization to perform better:</p>
+<ul>
+<li>Marketing could target features of your product to specific customers whose business capabilities would be best improved by having it</li>
+<li>Engineering could better focus on building new product features that would best serve target vertical markets or industries</li>
+</ul>
+<p>In fact, SAP has done something similar, by mapping their product offerings, to&nbsp;Business Maps&nbsp;that they have defined for several different industries.&nbsp; Their maps define business capabilities and then each one has an icon that indicates if SAP sells a product module that will help their prospective customer with that business capability. (Although, I can't find them on their site anymore)</p>
+<p>This demonstrates that Business Architecture is an asset, not an expense, because it is something that is used more than once (as was described in <a href="http://links.enterprisearchitecture.dk/links/files/You_Cant_Justify_Architecture.pdf" target="_blank"><em>You Can't "Cost Justify" Architecture</em></a>) .</p>
+<p><strong>Resources/Sources</strong></p>
+<ul>
+<li><a href="http://channel9.msdn.com/Blogs/scobleizer/Ric-Merrifield-Microsoft-gets-down-to-business-with-Motion-initiative" target="_blank">http://channel9.msdn.com/Blogs/scobleizer/Ric-Merrifield-Microsoft-gets-down-to-business-with-Motion-initiative</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/bb402954.aspx" target="_blank">Business-Capability Mapping: Staying Ahead of the Joneses</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/Bb736727" target="_blank">Motion Lite: A Rapid Application of the Business Architecture Techniques Used by Microsoft Motion</a></li>
+<li><a href="http://www.objectarchitects.biz/BusinessCapabilityManagement/BCM.html" target="_blank">Object Architects: Business Capability Management</a></li>
+<li><a href="http://www.bpminstitute.org/articles/article/article/the-business-case-for-business-architecture-ba.html" target="_blank">http://www.bpminstitute.org/articles/article/article/the-business-case-for-business-architecture-ba.html</a></li>
+<li><a href="http://links.enterprisearchitecture.dk/links/files/You_Cant_Justify_Architecture.pdf" target="_blank">[PDF] You Can't "Cost Justify" Architecture</a></li>
+<li><a href="http://objectarchitects.biz/aktuelles/BusinessCapabilityManagement/BCM.html"><em>[PDF] Capability Whitepaper</em></a></li>
+<li><em><a href="http://hbr.org/2008/06/the-next-revolution-in-productivity/ar/1">Next Revolution in Productivity.HarvardBusinessReview.Merrifield</a></em></li>
+<li><em><a href="http://download.microsoft.com/download/f/1/1/f1112044-7893-4254-a4db-e31ee8f729e5/10_MSBA_GettingStartedwithSOA_1911_v1.pptx" target="_blank">[Powerpoint] MSBA_GettingStartedwithSOA.pptx</a></em></li>
+</ul>
