@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Troy Farrell: Software Architect and Developer.  Fan of improv, swimming, 
   cats and vacations.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.troyfarrell.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://troyfarrell.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: troyfarrell
 github_username:  t2farrell
 linkedin_username: troyfarrell
@@ -34,6 +34,7 @@ theme: minima
 show_excerpts: true
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -58,3 +59,4 @@ exclude:
   - lib/
   - minima-ref/  #ignore reference copy of original minima theme
   - _img_work/
+  - README.md

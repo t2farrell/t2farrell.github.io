@@ -1,2 +1,5 @@
-﻿User-agent: *
-Disallow:
+---
+layout: none
+---
+User-agent: *
+Sitemap: {{ site.url }}/sitemap.xml
