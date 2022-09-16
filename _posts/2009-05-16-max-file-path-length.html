@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Maximum file path length - Windows and TFS - Part 2 - error CS0006: Metadata file could not be found"
+date:   2009-05-16 02:49:00 -0400
+tags: [tfs, team foundation server, cs0006]
+permalink: /blog/post/Maximum-file-path-length-Windows-and-TFS-Part-2-error-CS0006-Metadata-file-could-not-be-found  #support old legacy urls
+---
+
+<p>I blogged about TFS and the maximum file path length issue <a title="a while back in a previous post" href="/blog/post/Maximum-file-path-length---Windows-and-TFS">a while back</a>, and thought I had covered it pretty well.&nbsp; However, the issue came back to sting me again, so I thought it deserved another post.</p>
+
+<p>Our issue was, sometimes, but not all the time, we would get this error on our team build on the build server (but the local developer build would always work fine).</p>
+<h4>[Any CPU/Release] CSC(0,0): error CS0006: Metadata file '..\..\..\..\SharedAssemblies\MSApplicationBlocks\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll' could not be found</h4>
+<p>It took some time to figure this out... the path was correct on the server and the DLL was there.&nbsp; Now if you are the intuitive type, you may have already guessed from this blogs title that the problem is related to Windows path length limitation, but why was the problem intermittent?</p>
+<p>It turns out that this assembly reference was on a VS.NET Team Test Unit Test project.&nbsp; When you used the right click "Create Unit Tests" menu to create a new test, the wizard automatically adds assembly references, including a reference to this ExceptionHandling.dll.&nbsp; This would break the build on our build server.&nbsp; Our quick solution was to remove the reference from the unit test project, everything still compiled and it didn't seem to be needed.&nbsp; The builds now worked again on the build server, UNTIL someone added a new unit test and the cycle would start over again.&nbsp; This explained our intermittent problem.</p>
+<p>It still didn't explain why the build failed when this assembly was referenced, until I happened to find <a title="this blog entry" href="http://blogs.msdn.com/aaronhallberg/archive/2007/06/20/team-build-and-260-character-paths.aspx" target="_blank">this blog entry</a>... the same blog entry I noted in Part 1 of this blog series, but I didn't connect the dots until now. Aaron's blog entry talks about the 260 character path limit, but doesn't mention the error message we were seeing.</p>
+<p>It turns out, that for our unit test project,&nbsp; this ExceptionHandling.dll reference was the longest path of all of them, and was just long enough to be too long, but ONLY on the build server.&nbsp; The way the build server paths are structured is different than our dev boxes, which was shorter by about 25 characters and this explains why the build would break on our build server but not on our local boxes.</p>
+<p>The other severely annoying thing is that the actual error message mentions NOTHING about the path length... just that the file cannot be found.</p>
+<p>Using Aaron's tip about these variables ($(BuildDefinitionPath) and $(BuildDefinitionId)) in the properties of the Build Agent I switched to using the $(BuildDefinitionId) which shortened the path on our build server by about 23 characters.&nbsp; Now the builds always work.</p>
+<p>The moral of the story is... if you see the error message above, double-check your path lengths.</p>

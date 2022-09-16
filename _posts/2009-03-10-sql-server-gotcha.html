@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "SQL Server Gotcha - Cannot open database requested in login 'dbName'."
+date:   2009-03-10 11:12:00 -0400
+tags: [sql server, msbuild, connection error]
+permalink: /blog/post/SQL-Server-Gotcha-Cannot-open-database-requested-in-login-dbName  #support old legacy urls
+---
+
+<p>So I had a good fight today with a SQL Server 2008 connection that would not work.&nbsp; The error was:</p>
+<h4>Cannot open database requested in login myDbName. Login fails. Login failed for user 'myDbUserName'</h4>
+
+<p>&nbsp;This was dumbfounding.&nbsp; Troubleshooting the usual suspects, the following were attempted:</p>
+<ul>
+<li>check the database server to ensure that the database exists</li>
+<li>check the user login to ensure it exists, check the permissions for the user for this database</li>
+<li>try to connect using SQL Server authentication using this username and password from the Enterprise Manager - this works perfectly fine - but the ASP.NET application still gives this error</li>
+<li>double, triple and quadruple check the connection string for the ASP.NET application - no problems found</li>
+<li>drop the database and the login, recreate and try again - no difference</li>
+<li>reboot the database server - no difference</li>
+<li>check the event log for error messages - only the one displayed above is shown - nothing else out of the ordinary</li>
+</ul>
+<p>WTF?</p>
+<p>I finally figured out, after a couple hours of head-scratching, from going through some event logs within SQL Server Enterprise Manager that the database name had 6 space characters appended to the name. Therefore what appeared in Enterprise manager and everywhere else as "myDbName" was actually "myDbName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ".&nbsp; Something is obviously wrong with our MSBuild script which is autogenerating the database for us during the build process... I still have to figure out <strong><em>how </em></strong>it happened, but at least now I know <strong><em>why </em></strong>it would work in Enterprise Manager and not from the application.&nbsp; The app defines the connection string explicitly (with incorrect name missing spaces), while EntMgr connects and gives you a list of databases to choose from, so you never need to define the database name.</p>
+<p>Once I renamed the database to remove the blank spaces, everything worked again.</p>
+<p>I confirmed my theory by running this query, which highlights the extra spaces:</p>
+<p><em>SELECT '"' + name + '"' FROM sys.databases</em></p>
+<p>Ahhhh, the world makes sense again.</p>
+<p>&nbsp;</p>
