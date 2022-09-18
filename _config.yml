@@ -36,6 +36,15 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+webrick:
+  headers:
+    Strict-Transport-Security: "max-age=31536000; includeSubDomains"
+    Content-Security-Policy: base-uri 'self'; default-src 'self' https://*.youtube.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://code.jquery.com 'sha256-8/3DAdXYATNkOWw7dw/hdy9iis+Hzy7HmkzlavBsQyM=' 'sha256-ReAZKgSKiEvRqUgVZuk2knHDFkUu7EjHFJzW0WMlgkg=';
+    X-Frame-Options: SAMEORIGIN
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: no-referrer-when-downgrade
+    Permissions-Policy: camera=(), microphone=(), payment=(), usb=()
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

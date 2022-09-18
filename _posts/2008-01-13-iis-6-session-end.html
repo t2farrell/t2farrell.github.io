@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "IIS 6 on a Development box and Premature Session End"
+date:   2008-01-13 06:32:00 -0400
+tags: [session timeout]
+permalink: /blog/post/IIS-6-on-a-Development-box-and-Premature-Session-End  #support old legacy urls
+---
+
+<p>I started working on a legacy web application that was comprised of both classic ASP and ASP.NET.&nbsp; The development box was running win 2003 server x64 with IIS 6.&nbsp;</p>
+
+<p>The application typically uses the standard 20 minute session timeout period, however, for my dev box, I wanted to lengthen that time to avoid having to log in more times than necessary.&nbsp; I set the classic ASP session to 240 minutes, and the ASP.NET session to 240 minutes in the web.config file.</p>
+<p>I then proceeded to go to work.&nbsp; A short time later, I was redirected to the login page.&nbsp; Hmm, wierd I thought.&nbsp; Ah, let it go this time.&nbsp; Log in and keep working.</p>
+<p>The next day, after my initial log in, once again my session timed out after about 40 minutes and I was redirected to the login page.&nbsp; I double checked my session times, both were still set to 240 minutes.</p>
+<p>After a little bit of head scratching, I found my way into the properties of the Application Pool for my web app in IIS.&nbsp; My attention was drawn to the Recycling tab where I noted that my application pool would be recycled every 1740 minutes.&nbsp; Since my sessions were stored "In Process", this recycling would kill my session, however, the timing didn't seem too likely.&nbsp; Nonetheless, I changed the property to configure the worker process to recycle at a specifiec time instead:&nbsp; 3am.</p>
+<p>On the Performance tab, I found something even more interesting.&nbsp; An "Idle Timeout" setting that was set to shutdown the worker process after being idle for 20 minutes.&nbsp; Bingo!</p>
+<p>So even though my session timeouts were set correctly at 240 minutes, I could still lose my session after 20 minutes because the worker process would be shut down after 20 minutes of inactivity... which might be common on a development machine where you are the only web site visitor and you are distracted by other work or working in other applications for a period of time.</p>
+<p>Once I turned off the "Idle Timeout" feature for my Application Pool, my premature session death is a thing of the past.</p>

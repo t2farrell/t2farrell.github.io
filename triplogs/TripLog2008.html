@@ -721,12 +721,7 @@ includeInNav: false
     </p>
     <p>
         Feel free to
-        <script type="text/javascript">
-            var name = "triplogs";
-            var domain = "tr" + "oy" + "f" + "arr" + "e" + "ll." + "c" + "om";
-            document.write('<a href=\"ma' + 'il' + 'to:' + name + '@@' + domain + '\?subject=Algonquin 2008 Trip Log">');
-            document.write('email</a>');
-        </script>
+        <span id="addressLink"></span>
         <noscript>
             -- email... sorry, email link requires javascript --
         </noscript>
@@ -742,17 +737,4 @@ includeInNav: false
 <!-- Add fancyBox -->
 <link rel="stylesheet" href="/assets/js/fancybox/dist/css/jquery.fancybox.min.css" type="text/css" media="screen" />
 <script type="text/javascript" src="/assets/js/fancybox/dist/js/jquery.fancybox.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".fancybox").fancybox({
-            helpers: {
-                title: { type: 'inside' }
-            }
-        });
-
-        //setup onlick events for inline links that open gallery images
-        $('a[data-id]').click(function () {
-            $('#pic' + $(this).attr('data-id')).click(); return false;
-        });
-    });
-</script>
+<script type="text/javascript" src="/assets/js/triplib.js"></script>

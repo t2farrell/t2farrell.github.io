@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "Windows Server 2003 Distorted Audio"
+date:   2008-03-15 05:15:00 -0400
+tags: [windows server 2003, webcast]
+permalink: /blog/post/Windows-Server-2003-Distorted-Audio  #support old legacy urls
+---
+
+<p>After setting up a new workstation at work with Windows Server 2003 x64 I discovered an annoying problem that was hard to live with and wound up being harder to solve than I expected.</p>
+
+<p>For work, I often view alot of MSDN video and webcasts.&nbsp; The problem I was having was distorted audio during playback of these webcasts.&nbsp; Other MP3 or YouTube sources were problem free.&nbsp; The distorted audio was distracting and very annoying, but you could still hear the audio, which for these webcasts was typically just voice audio for the webcast presentation.&nbsp; Because the other audio sources were problem free, I initially thought that the audio for these webcasts was just poor quality, and I lived with it for a while, until I tested one at home, and found that the audio was perfectly fine at home.&nbsp; This caused me to investigate further, and for some reason finding a solution was much more difficult than I think it should have been.&nbsp;</p>
+<p>Maybe the patch had just been released at that point and not indexed by google yet, I'm not sure.&nbsp; I was very glad to find a fix though.</p>
+<p>Anyway, the fix is available from Microsoft and cures a problem with audio that has been encoded using the Windows Media Audio Voice 9 codec, which was the case with many of the MSDN webcasts.</p>
+<p>The fix can be found here:</p>
+<p><a title="http://support.microsoft.com/kb/940666" href="http://support.microsoft.com/kb/940666" target="_blank">http://support.microsoft.com/kb/940666</a></p>

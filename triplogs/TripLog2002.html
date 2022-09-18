@@ -643,19 +643,13 @@ includeInNav: false
     </ul>
     <p>
         Feel free to
-        <script type="text/javascript">
-            var name = "triplogs";
-            var domain = "tr" + "oy" + "f" + "arr" + "e" + "ll." + "c" + "om";
-            document.write('<a href=\"ma' + 'il' + 'to:' + name + '@' + domain + '\?subject=Algonquin 2002 Trip Log">');
-            document.write('email</a>');
-        </script>
+        <span id="addressLink"></span>
         <noscript>
             -- email... sorry, email link requires javascript --
         </noscript>
         us both with comments!
     </p>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <!-- Add mousewheel plugin (this is optional) -->
@@ -663,12 +657,5 @@ includeInNav: false
 <!-- Add fancyBox -->
 <link rel="stylesheet" href="/assets/js/fancybox/dist/css/jquery.fancybox.min.css" type="text/css" media="screen" />
 <script type="text/javascript" src="/assets/js/fancybox/dist/js/jquery.fancybox.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".fancybox").fancybox({
-            helpers: {
-                title: { type: 'inside' }
-            }
-        });
-    });
-</script>
+
+<script type="text/javascript" src="/assets/js/triplib.js"></script>

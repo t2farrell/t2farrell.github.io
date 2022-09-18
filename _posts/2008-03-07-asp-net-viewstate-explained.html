@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "ASP.NET ViewState Explained"
+date:   2008-03-07 09:44:00 -0400
+tags: [viewstate, asp.net]
+permalink: /blog/post/ASPNET-ViewState-Explained  #support old legacy urls
+---
+
+<p>While doing some research for something I was working on, I came across this blog about ASP.NET and the Viewstate.&nbsp; This is a must read for those who are somewhat familiar with the viewstate and those who believe they know it all. &nbsp;&nbsp;</p>
+
+<p><a title="http://weblogs.asp.net/infinitiesloop/archive/2006/08/03/Truly-Understanding-Viewstate.aspx" href="http://weblogs.asp.net/infinitiesloop/archive/2006/08/03/Truly-Understanding-Viewstate.aspx" target="_blank">http://weblogs.asp.net/infinitiesloop/archive/2006/08/03/Truly-Understanding-Viewstate.aspx</a></p>
+<p>The following are some points that I took away from the article:</p>
+<ul>
+<li>an ASP.NET control will automatically restore entered/selected values even if the ViewState is DISABLED!&nbsp; (wait, what? I thought that is what the ViewState was for?)</li>
+<li>the Viewstate is typically only required for simple controls if the controls will be hidden between post backs (otherwise, see point above)</li>
+<li>if you databind your control on each request in the OnInit event, you can disable the ViewState and the control will still automatically restore entered/selected values</li>
+</ul>

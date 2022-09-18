@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Maximum file path length - Windows and TFS"
+date:   2008-08-03 01:55:00 -0400
+tags: [visual studio, windows, team foundation server, tfs]
+permalink: /blog/post/Maximum-file-path-length-Windows-and-TFS  #support old legacy urls
+---
+
+<p>260 Characters.&nbsp; This seems like alot, and it is, however...</p>
+<p>I ran into this issue a while back with an existing project I worked on and it was a royal pain.&nbsp; When attempting to follow the naming conventions adopted for the folders and projects within a Visual Studio solution, the newly added filename + path exceeded this hardcoded limit within windows (many core Windows APIs still have this hardcoded limit, and many of the more recent APIs, including the .NET framework still depend upon many of these core APIs).&nbsp; This issue became apparent when trying to check the file into Visual SourceSafe, when an error was thrown.</p>
+
+<p>Now having moved on to a new project, and new technology (Team Foundation Server), I somehow thought that the issue would magically disappear.&nbsp; Not so.</p>
+<p>While 260 characters seems like alot, it is quite possible to hit this limit when you:</p>
+<ul>
+<li>use nice descriptive names for folders within projects instead of more cryptic abbreviations</li>
+</ul>
+<ul>
+<li>root your TFS workspace in a subfolder, that will ultimately add unnecessary characters to the total path (D:\work&nbsp; vs. D:\CompanyName\ProjectName\Source)&nbsp;</li>
+</ul>
+<ul>
+<li>use a VS.NET database project, which has its own built in folder structure (Schema Objects\Tables\Keys\) and file naming conventions, which if you have descriptive table names, means the file name of a foreign key constraint SQL file could be really long, <strong>just over 100 characters alone for the filename itself</strong> without the path in a recent database that I reverse engineered</li>
+</ul>
+<p>There is no real fix for this that I have found, except using a shorter path.&nbsp; Being aware of this limitation when setting up the naming conventions on a new project can save alot of hassle later on, and could avoid having to rename the existing files/paths or changing your naming conventions part way through a project to accommodate this limitation.</p>
+<p>References:<br /> <a title="http://www.shifd.net/post/2008/02/Maximum-file-path-length-in-TFS-Team-Build.aspx" href="http://www.shifd.net/post/2008/02/Maximum-file-path-length-in-TFS-Team-Build.aspx" target="_blank">http://www.shifd.net/post/2008/02/Maximum-file-path-length-in-TFS-Team-Build.aspx</a><br /> <a title="http://blogs.msdn.com/aaronhallberg/archive/2007/06/20/team-build-and-260-character-paths.aspx" href="http://blogs.msdn.com/aaronhallberg/archive/2007/06/20/team-build-and-260-character-paths.aspx" target="_blank">http://blogs.msdn.com/aaronhallberg/archive/2007/06/20/team-build-and-260-character-paths.aspx</a><br /> <a title="http://neovolve.com/archive/2006/11/09/So-you-still-can_2700_t-have-a-path-more-than-260-characters_3F003F003F00_.aspx" href="http://neovolve.com/archive/2006/11/09/So-you-still-can_2700_t-have-a-path-more-than-260-characters_3F003F003F00_.aspx" target="_blank">http://neovolve.com/archive/2006/11/09/So-you-still-can_2700_t-have-a-path-more-than-260-characters_3F003F003F00_.aspx</a><br /> <a title="http://blogs.msdn.com/saraford/archive/2005/12/15/504240.aspx" href="http://blogs.msdn.com/saraford/archive/2005/12/15/504240.aspx" target="_blank">http://blogs.msdn.com/saraford/archive/2005/12/15/504240.aspx</a></p>
+<p>Edit:&nbsp; I've posted <a title="Part 2 on this topic here" href="/blog/post/Maximum-file-path-length-Windows-and-TFS-Part-2-error-CS0006-Metadata-file-could-not-be-found">Part 2 on this topic here</a>.</p>
