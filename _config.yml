@@ -28,6 +28,7 @@ url: "https://troyfarrell.com" # the base hostname & protocol for your site, e.g
 twitter_username: troyfarrell
 github_username:  t2farrell
 linkedin_username: troyfarrell
+google_analytics: UA-3882901-1
 
 # Build settings
 theme: minima
@@ -39,7 +40,7 @@ plugins:
 webrick:
   headers:
     Strict-Transport-Security: "max-age=31536000; includeSubDomains"
-    Content-Security-Policy: base-uri 'self'; default-src 'self' https://*.youtube.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://code.jquery.com 'sha256-8/3DAdXYATNkOWw7dw/hdy9iis+Hzy7HmkzlavBsQyM=' 'sha256-ReAZKgSKiEvRqUgVZuk2knHDFkUu7EjHFJzW0WMlgkg=';
+    Content-Security-Policy: base-uri 'self'; default-src 'self' https://*.youtube.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://code.jquery.com https://www.googletagmanager.com  https://www.google-analytics.com 'sha256-txg5QqYdtNrX4Ty0HRiXNlF4HZmmgwLWMmNJDNa0g48=' 'sha256-8/3DAdXYATNkOWw7dw/hdy9iis+Hzy7HmkzlavBsQyM=' 'sha256-ReAZKgSKiEvRqUgVZuk2knHDFkUu7EjHFJzW0WMlgkg='; img-src 'self' https://www.googletagmanager.com  https://www.google-analytics.com
     X-Frame-Options: SAMEORIGIN
     X-Content-Type-Options: nosniff
     Referrer-Policy: no-referrer-when-downgrade
